@@ -1,112 +1,119 @@
 #include "main.h"
 #include <stdio.h>
 #include <unistd.h>
-int _putchar(char c) {
-    return write(1, &c, 1);
+
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }
 
 int _printf(const char *format, ...)
 {
-    int counter = 0;
-    va_list args;
+	int counter = 0;
+	va_list args;
 
-    va_start(args, format);
+	va_start(args, format);
 
-    while (*format)
-    {
-        if (*format == '%')
-        {
-            format++;
-            if (*format == '%')
-            {
-                _putchar('%');
-                counter++;
-            }
-            else if (*format == 's')
-            {
-                counter += print_string(va_arg(args, char *));
-            }
-            else if (*format == 'c')
-            {
-                _putchar(va_arg(args, int));
-                counter++;
-            }
-            else if (*format == 'd' || *format == 'i')
-            {
-                counter += print_int(va_arg(args, int));
-            }
-            else if (*format == 'b')
-            {
-                counter += decimalTobinary(va_arg(args, unsigned int));
-            }
-        }
-        else
-        {
-            _putchar(*format);
-            counter++;
-        }
-        format++;
-    }
+	while (*format)
+	{
+	if (*format == '%')
+	{
+	format++;
+		if (*format == '%')
+		{
+			_putchar('%');
+			counter++;
+		}
+		else if (*format == 's')
+		{
+			counter += print_string(va_arg(args, char *));
+		}
+		else if (*format == 'c')
+		{
+			_putchar(va_arg(args, int));
+			counter++;
+		}
+		else if (*format == 'd' || *format == 'i')
+		{
+			counter += print_int(va_arg(args, int));
+		}
+		else if (*format == 'b')
+		{
+			counter += decimalTobinary(va_arg(args, unsigned int))
+		}
+	}
+	else
+	{
+		_putchar(*format);
+		counter++;
+	}
+		format++;
+	}
 
-    va_end(args);
-    return counter;
+	va_end(args);
+	return (counter);
 }
 
 int print_string(char *str)
 {
-    int counter = 0;
-    if (!str) {
-        str = "(null)";
-    }
-    while (*str)
-    {
-        _putchar(*str);
-        str++;
-        counter++;
-    }
-    return counter;
+	int counter = 0;
+
+	if (!str)
+	{
+		str = "(null)";
+	}
+	while (*str)
+	{
+		_putchar(*str);
+		str++;
+		counter++;
+	}
+	return (counter);
 }
 
 int print_int(int n)
 {
- 
+
 if (n / 10)
 {
 print_int(n / 10);
 }
 _putchar('0' + n % 10);
-return 1;
+return (1);
 
 }
 
 int decimalTobinary(unsigned int d)
 {
-    int counter = 0;
-    int j;
-    int quotient[32];
-    int i = 0;
+	int counter = 0;
+	int j;
+	int quotient[32];
+	int i = 0;
 
-    if (d == 0) {
-        _putchar('0');
-        return 1;
-    }
+	if (d == 0)
+	{
+		_putchar('0');
+		return 1;
+	}
 
-    while (d > 0) {
-        quotient[i] = d % 2;
-        d = d / 2;
-        i++;
-    }
+	while (d > 0)
+	{
+		quotient[i] = d % 2;
+		d = d / 2;
+		i++;
+	}
 
-    for (j = i - 1; j >= 0; j--) {
-        _putchar(quotient[j] + '0');
-        counter++;
-    }
+	for (j = i - 1; j >= 0; j--) {
+		_putchar(quotient[j] + '0');
+		counter++;
+	}
 
-    return counter;
+	return (counter);
 }
+
 int print_char(va_list args)
 {
-    char c = (char)va_arg(args, int);
-    _putchar(c);
-    return 1;
+	char c = (char)va_arg(args, int);
+	_putchar(c);
+	return (1);
 }
