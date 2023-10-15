@@ -1,21 +1,15 @@
 #include "main.h"
-#include <stdarg.h>
 #include <stdio.h>
+#include <unistd.h>
+int _putchar(char c) {
+    return write(1, &c, 1);
+}
 
-/**
- * _printf - custom printf function
- * @format: format string
- * Return: number of characters printed
- */
 int _printf(const char *format, ...)
 {
+    int counter = 0;
+    va_list args;
 
-	int counter = 0;
-	va_list args;
-/**
-    if (format == NULL)
-        return 0;
-*/
     va_start(args, format);
 
     while (*format)
@@ -23,47 +17,87 @@ int _printf(const char *format, ...)
         if (*format == '%')
         {
             format++;
-	    if (*format == '%')
+            if (*format == '%')
             {
                 _putchar('%');
                 counter++;
             }
-
-            if (*format == 's')
+            else if (*format == 's')
             {
-		 counter += print_string(va_arg(args, char *));;
-       		 }
-            
+                counter += print_string(va_arg(args, char *));
+            }
             else if (*format == 'c')
             {
-                _putchar( va_arg(args, int));
-            
-            
+                _putchar(va_arg(args, int));
                 counter++;
             }
             else if (*format == 'd' || *format == 'i')
             {
-                print_int(va_arg(args, int));
-
+                counter += print_int(va_arg(args, int));
             }
-
             else if (*format == 'b')
             {
-               decimalTobinary(va_arg(args, unsigned int));
-	    }
-            
-	    
-	}
+                counter += decimalTobinary(va_arg(args, unsigned int));
+            }
+        }
         else
         {
             _putchar(*format);
             counter++;
         }
-
         format++;
     }
 
     va_end(args);
+    return counter;
+}
+
+int print_string(char *str)
+{
+    unsigned int i;
+
+    for (i = 0; str[i]; i++)
+    {
+        _putchar(str[i]);
+    }
+    return (i);
+}
+
+int print_int(int n)
+{
+ 
+if (n / 10)
+{
+print_int(n / 10);
+}
+_putchar('0' + n % 10);
+return 1;
+
+}
+
+int decimalTobinary(unsigned int d)
+{
+    int counter = 0;
+    int j;
+    int quotient[32];
+    int i = 0;
+
+    if (d == 0) {
+        _putchar('0');
+        return 1;
+    }
+
+    while (d > 0) {
+        quotient[i] = d % 2;
+        d = d / 2;
+        i++;
+    }
+
+    for (j = i - 1; j >= 0; j--) {
+        _putchar(quotient[j] + '0');
+        counter++;
+    }
+
     return counter;
 }
 
