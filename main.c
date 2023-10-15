@@ -13,13 +13,15 @@ int main(void)
 
     _printf("Let's try to printf a simple sentence.\n");
   _printf("%c", 'S');
-  _printf("A char inside a setence: %c. did it work? /n", 'F' );
+  _printf("A char inside a setence: %c. did it work? \n", 'F' );
     _printf("let `see if the cast is correctly done: %c.did it  work?\n 48");
       _printf("Complete the setence: You %s nothing, Jon snow.\n", "Know" );
         _printf("%c", '\0');
 	printf("%c",'\0');
 	_printf("%");
-	printf("%");
+	printf("%\n");
+	_printf("%s,%s\n","saad", '1');
+    printf("%s,%s\n","saad", '1');
   
   /*  len2 = printf("Let's try to printf a simple sentence.\n");
     ui = (unsigned int)INT_MAX + 1024;

@@ -18,30 +18,40 @@ int _printf(const char *format, ...)
 	{
 	if (*format == '%')
 	{
-	format++;
-		
-		if (*format == '%')
-		{
+		format++;
+	switch(*format)
+	{
+		case '%':
 			_putchar('%');
 			counter++;
-		}
-		else if (*format == 's')
-		{
+			break;
+		
+		case 's':
+		
 			counter += print_string(va_arg(args, char *));
-		}
-		else if (*format == 'c')
-		{
+			break;
+		case 'c':
+		
 			_putchar(va_arg(args, int));
 			counter++;
-		}
-		else if (*format == 'd' || *format == 'i')
-		{
+			break;
+		
+		case 'd':
+		case 'i':
+		
 			counter += print_int(va_arg(args, int));
-		}
-		else if (*format == 'b')
-		{
+			break;
+		case 'b':
+		
 			counter += decimalTobinary(va_arg(args, unsigned int));
-		}
+			break;
+			default:
+                    
+                    write(1, "%", 1);
+                    write(1, format, 1);
+                    counter += 2;
+                    break;
+	}
 	}
 	else
 	{
