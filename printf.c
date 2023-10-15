@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 		 for (i = 0; str[i] != '\0'; i++) {
            	 _putchar(str[i]);
 		 counter++;
-        }
+       		 }
             }
             else if (*format == 'c')
             {
@@ -56,7 +56,12 @@ int _printf(const char *format, ...)
                decimalTobinary(va_arg(args, unsigned int));
                 counter++;
             }
-        }
+	    else if (*format != '%'){
+                putchar('%');
+                putchar(*format);
+                counter += 2;
+       		 }
+	}
         else
         {
             _putchar(*format);
@@ -69,3 +74,4 @@ int _printf(const char *format, ...)
     va_end(args);
     return counter;
 }
+
