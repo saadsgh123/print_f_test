@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 	switch(*format)
 	{
 		case '%':
-			_putchar('%');
+			write(1, %,1);
 			counter++;
 			break;
 		
@@ -45,7 +45,7 @@ int _printf(const char *format, ...)
 		
 			counter += decimalTobinary(va_arg(args, unsigned int));
 			break;
-			default:
+		default:
                     
                     write(1, "%", 1);
                     write(1, format, 1);
@@ -75,9 +75,10 @@ int print_string(char *str)
 	}
 	while (*str)
 	{
-		_putchar(*str);
-		str++;
+		write(1, str, 1);
+
 		counter++;
+		str++;
 	}
 	return (counter);
 }
