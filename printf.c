@@ -55,7 +55,7 @@ int _printf(const char *format, ...)
 	}
 	else
 	{
-		_putchar(*format);
+		write(1,format, 1);
 		counter++;
 	}
 		format++;
