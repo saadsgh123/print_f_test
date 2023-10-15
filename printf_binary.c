@@ -6,12 +6,12 @@
  */
 void decimalTobinary(unsigned int d)
 {
+	int quotient[32], j;
 	if (d == 0)
 	{
         	_putchar('0');
         	return;
     	}
-	int quotient[32];
 	int i = 0;
 	while(d > 0)
 	{
@@ -20,7 +20,7 @@ void decimalTobinary(unsigned int d)
 
 		i++;
 	}
-	for (int j = i - 1; j >= 0; j--)
+	for (j = i - 1; j >= 0; j--)
 	{
 		_putchar( quotient[j] + '0');
 	}
