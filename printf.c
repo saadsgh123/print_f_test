@@ -26,14 +26,7 @@ int _printf(const char *format, ...)
             if (*format == 's')
             {
                 char *str = va_arg(args, char *);
-                if (str == NULL)
-                {
-                    print_string("(null)");
-                }
-                else
-                {
-                    print_string(str);
-                }
+                 print_string(str);
                 counter++;
             }
             else if (*format == 'c')
