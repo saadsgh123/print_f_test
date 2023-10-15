@@ -4,10 +4,24 @@
  * @d: arguments.
  * Return: 1.
  */
-void decimalTobinary(unsigned int d)
-{
-	if ( d> 1) {
-        decimalTobinary(d / 2);
+int  decimalTobinary(unsigned int d) {
+	int counter = 0 ;
+	int j;
+	   int quotient[32];
+    int i = 0;
+    if (d == 0) {
+        _putchar('0');
+        return 1;
     }
-    putchar('0' + (d % 2));
+    while (d > 0) {
+        quotient[i] = d % 2;
+        d = d / 2;
+
+        i++;
+    }
+    for (j = i - 1; j >= 0; j--) {
+       _putchar( quotient[j] + '0');
+       counter++;
+}
+return counter;
 }

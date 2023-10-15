@@ -13,10 +13,10 @@ int _printf(const char *format, ...)
 
 	int counter = 0;
 	va_list args;
-
+/**
     if (format == NULL)
         return 0;
-
+*/
     va_start(args, format);
 
     while (*format)
@@ -24,6 +24,11 @@ int _printf(const char *format, ...)
         if (*format == '%')
         {
             format++;
+	    if (*format == '%')
+            {
+                _putchar('%');
+                counter++;
+            }
 
             if (*format == 's')
             {
@@ -45,11 +50,7 @@ int _printf(const char *format, ...)
                 print_int(va_arg(args, int));
                 counter++;
             }
-            else if (*format == '%')
-            {
-                _putchar('%');
-                counter++;
-            }
+
             else if (*format == 'b')
             {
                decimalTobinary(va_arg(args, unsigned int));
