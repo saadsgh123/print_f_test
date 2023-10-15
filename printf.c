@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 	switch(*format)
 	{
 		case '%':
-			write(1, %,1);
+			write(1,"%",1);
 			counter++;
 			break;
 		
