@@ -9,7 +9,6 @@
  */
 int _printf(const char *format, ...)
 {
-	int i;
 
 	int counter = 0;
 	va_list args;
@@ -32,16 +31,13 @@ int _printf(const char *format, ...)
 
             if (*format == 's')
             {
-              	 char *str = va_arg(args, char*);
-		 for (i = 0; str[i] != '\0'; i++) {
-           	 _putchar(str[i]);
-		 counter++;
+		 counter += print_string(va_arg(args, char *));;
        		 }
-            }
+            
             else if (*format == 'c')
             {
-                int c = va_arg(args, int);
-               _putchar(c);
+                _putchar( va_arg(args, int));
+            
             
                 counter++;
             }
