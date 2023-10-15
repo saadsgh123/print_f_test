@@ -56,11 +56,7 @@ int _printf(const char *format, ...)
                decimalTobinary(va_arg(args, unsigned int));
                 counter++;
             }
-	    else if (*format != '%'){
-                putchar('%');
-                putchar(*format);
-                counter += 2;
-       		 }
+	    
 	}
         else
         {
