@@ -86,44 +86,55 @@ int print_string(va_list args) {
         return count;
     }
 }
+
 int print_int(int n)
 {
-    int counter = 0;
-    int div = 1;
-    int temp = n;
-    if (n == 0)
-    {
-        _putchar('0');
-        return 1;
-    }
+    int count = 0;
+    int sign = 1;
 
     if (n < 0)
     {
-        _putchar('-');
+        write(1, "-", 1);
+        count++;
+        sign = -1;
         n = -n;
-        counter++;
     }
 
-
-
-    while (temp > 9)
+    int temp = n;
+    int num_digits = 0;
+    while (temp > 0)
     {
         temp /= 10;
-        div *= 10;
+        num_digits++;
     }
 
-    while (div > 0)
+    if (n == 0)
     {
-        int digit = n / div;
-        _putchar(digit + '0');
-        n -= digit * div;
-        div /= 10;
-        counter++;
+        write(1, "0", 1);
+        count++;
+    }
+    else
+    {
+        while (num_digits > 0)
+        {
+            int divisor = 1;
+            for (int i = 1; i < num_digits; i++)
+            {
+                divisor *= 10;
+            }
+
+            int digit = n / divisor;
+            char digit_char = '0' + digit;
+            write(1, &digit_char, 1);
+            count++;
+            n -= digit * divisor;
+            num_digits--;
+        }
     }
 
-    return counter;
-
+    return count;
 }
+
 int decimalTobinary(unsigned int d)
 {
         int counter = 0;
