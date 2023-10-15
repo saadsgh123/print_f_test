@@ -4,13 +4,15 @@
  * @d: arguments.
  * Return: 1.
  */
-void decimalTobinary(unsigned int d)
+int decimalTobinary(unsigned int d)
 {
+	int counter = 0;
 	int quotient[32], j, i = 0;
 	if (d == 0)
 	{
         	_putchar('0');
-        	return;
+        	return 1;
+	
     	}
 	while(d > 0)
 	{
@@ -22,5 +24,7 @@ void decimalTobinary(unsigned int d)
 	for (j = i - 1; j >= 0; j--)
 	{
 		_putchar( quotient[j] + '0');
+		counter ++;
 	}
+return counter;
 }

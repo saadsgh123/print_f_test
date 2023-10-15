@@ -6,12 +6,12 @@
  */
 int print_char(char *c)
 {
-        int countr = 0, i;
-        for (i = 0; c[i]; c++)
+        int counter = 0, i;
+        for (i = 0; c[i] != '\0'; c++)
 	{
         _putchar(c[i]);
-                countr++;
+                counter++;
 
         }
-return (0);
+return counter;
 }
