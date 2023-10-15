@@ -19,8 +19,7 @@ int _printf(const char *format, ...)
 	if (*format == '%')
 	{
 	format++
-		if (*formar == '\0')
-			break;
+		
 		if (*format == '%')
 		{
 			_putchar('%');
