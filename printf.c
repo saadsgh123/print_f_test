@@ -10,6 +10,7 @@
 int _printf(const char *format, ...)
 {
 	int i;
+
 	int counter = 0;
 	va_list args;
 
@@ -51,7 +52,7 @@ int _printf(const char *format, ...)
             }
             else if (*format == 'b')
             {
-                decimalTobinary(va_arg(args, unsigned int));
+               decimalTobinary(va_arg(args, unsigned int));
                 counter++;
             }
         }

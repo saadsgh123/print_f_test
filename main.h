@@ -10,6 +10,6 @@
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int  decimalTobinary(unsigned int d);
+void  decimalTobinary(unsigned int d);
 int print_int(int n);
 #endif
