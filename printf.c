@@ -44,14 +44,14 @@ int _printf(const char *format, ...)
             else if (*format == 'd' || *format == 'i')
             {
                 print_int(va_arg(args, int));
-                counter++;
+
             }
 
             else if (*format == 'b')
             {
                decimalTobinary(va_arg(args, unsigned int));
-                counter++;
-            }
+	    }
+            
 	    
 	}
         else
