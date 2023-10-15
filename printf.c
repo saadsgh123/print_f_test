@@ -55,9 +55,8 @@ int _printf(const char *format, ...)
 int print_string(char *str)
 {
     int counter = 0;
-    if (str == NULL)
-    {
-        return 0;
+    if (!str) {
+        str = "(null)";
     }
     while (*str)
     {
