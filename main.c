@@ -22,8 +22,8 @@ int main(void)
 	printf("%\n");
 	_printf("%s,%s\n","saad", '1');
     printf("%s,%s\n","saad", '1');
-  
-  /*  len2 = printf("Let's try to printf a simple sentence.\n");
+ /* 
+   len2 = printf("Let's try to printf a simple sentence.\n");
     ui = (unsigned int)INT_MAX + 1024;
     addr = (void *)0x7ffe637541f0;
     _printf("Length:[%d, %i]\n", len, len);
@@ -49,4 +49,5 @@ int main(void)
     _printf("Unknown:[%r]\n");
     printf("Unknown:[%r]\n");*/
     return (0);
+    
 }

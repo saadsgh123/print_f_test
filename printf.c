@@ -14,14 +14,9 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-while (*format)
+	while (*format)
 	{
-	if (*format != '%')
-	{
-		write(1, format,1);
-		counter++;
-	}
-	else
+	if (*format == '%')
 	{
 		format++;
 	switch(*format)
@@ -32,31 +27,24 @@ while (*format)
 			break;
 		
 		case 's':
-			{
+		
 			counter += print_string(va_arg(args, char *));
 			break;
-			}
-			case 'c':
-			{
-			char c = va_arg(args, int);
-			write(1,&c,1);
+		case 'c':
+		
+			_putchar(va_arg(args, int));
 			counter++;
 			break;
-			}
+		
 		case 'd':
 		case 'i':
-			{
+		
 			counter += print_int(va_arg(args, int));
 			break;
-			}
-			case 'b':
-			{	
-			counter += decimalTobinary(va_arg(args, unsigned int));
-                   	 break;
-			
-			break;
-			}
+		case 'b':
 		
+			counter += decimalTobinary(va_arg(args, unsigned int));
+			break;
 		default:
                     
                     write(1, "%", 1);
@@ -65,12 +53,18 @@ while (*format)
                     break;
 	}
 	}
+	else
+	{
+		write(1,format, 1);
+		counter++;
+	}
 		format++;
 	}
 	va_end(args);
 
 	return (counter);
 }
+
 int print_string(char *str)
 {
 	int counter = 0;
@@ -91,16 +85,42 @@ int print_string(char *str)
 
 int print_int(int n)
 {
+    int counter = 0;
+    int div = 1;
+    int temp = n;
+    if (n == 0)
+    {
+        _putchar('0');
+        return 1;
+    }
 
-if (n / 10)
-{
-print_int(n / 10);
+    if (n < 0)
+    {
+        _putchar('-');
+        n = -n;
+        counter++;
+    }
+
+
+
+    while (temp > 9)
+    {
+        temp /= 10;
+        div *= 10;
+    }
+
+    while (div > 0)
+    {
+        int digit = n / div;
+        _putchar(digit + '0');
+        n -= digit * div;
+        div /= 10;
+        counter++;
+    }
+
+    return counter;
+
 }
-_putchar('0' + n % 10);
-return (1);
-
-}
-
 int decimalTobinary(unsigned int d)
 {
 	int counter = 0;
