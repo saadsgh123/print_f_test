@@ -4,14 +4,18 @@
  * @str: Type char pointer
  * Return: c.
  */
-int print_string(char *str)
+int  print_string(const char *str)
 {
-	int counter = 0, i;
-
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		_putchar(str[i]);
-		counter++;
-	}
-	return counter;
+	int i ,counter = 0;
+	if (str != NULL)
+       	{
+        for (i = 0; str[i] != '\0'; i++) {
+            putchar(str[i]);
+        }
+   	}
+       	else {
+        	str = "(null)";
+    }
+	return counter++;
 }
+

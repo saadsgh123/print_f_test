@@ -9,7 +9,7 @@
 #include <unistd.h>
 
 int _putchar(char c);
-int print_string(char *str);
+int print_string(const char *);
 int print_char(char any_char);
 int _printf(const char *format, ...);
 int  decimalTobinary(unsigned int d);
