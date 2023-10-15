@@ -9,7 +9,6 @@
  */
 int _printf(const char *format, ...)
 {
-	char ch;
 	int counter = 0;
 	va_list args;
 
@@ -39,8 +38,10 @@ int _printf(const char *format, ...)
             }
             else if (*format == 'c')
             {
-                ch = (va_arg(args, int));
-                counter = print_char(ch);
+                int c = va_arg(args, int);
+               _putchar(c);
+            
+                counter++;
             }
             else if (*format == 'd' || *format == 'i')
             {
