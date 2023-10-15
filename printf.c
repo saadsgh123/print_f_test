@@ -12,6 +12,9 @@ int _printf(const char *format, ...)
 	int counter = 0;
 	va_list args;
 
+	char ch;
+	 int num;
+	    unsigned int value;
 	va_start(args, format);
 
 	while (*format)
@@ -28,22 +31,24 @@ int _printf(const char *format, ...)
 		
 		case 's':
 		
-			counter += print_string(va_arg(args, char *));
+			counter += print_string(args);
 			break;
 		case 'c':
 		
-			_putchar(va_arg(args, int));
+			 ch = (va_arg(args, int));
+			write(1, &ch, 1);
 			counter++;
 			break;
 		
 		case 'd':
 		case 'i':
-		
-			counter += print_int(va_arg(args, int));
+			 num = va_arg(args, int);	
+			counter += print_int(num);
 			break;
 		case 'b':
+			  value = va_arg(args, unsigned int);
 		
-			counter += decimalTobinary(va_arg(args, unsigned int));
+			counter += decimalTobinary(value);
 			break;
 		default:
                     
@@ -65,24 +70,22 @@ int _printf(const char *format, ...)
 	return (counter);
 }
 
-int print_string(char *str)
-{
-	int counter = 0;
-
-	if (!str)
-	{
-		str = "(null)";
-	}
-	while (*str)
-	{
-		write(1, str, 1);
-
-		counter++;
-		str++;
-	}
-	return (counter);
+int print_string(va_list args) {
+    char *str = va_arg(args, char *);
+    if (!str) {
+     
+        write(1, "(null)", 6);  
+        return 6;  
+    } else {
+        int count = 0;
+        while (*str) {
+            write(1, str, 1);
+            str++;
+            count++;
+        }
+        return count;
+    }
 }
-
 int print_int(int n)
 {
     int counter = 0;
