@@ -18,7 +18,9 @@ int _printf(const char *format, ...)
 	{
 	if (*format == '%')
 	{
-	format++;
+	format++
+		if (*formar == '\0')
+			break;
 		if (*format == '%')
 		{
 			_putchar('%');
@@ -39,7 +41,7 @@ int _printf(const char *format, ...)
 		}
 		else if (*format == 'b')
 		{
-			counter += decimalTobinary(va_arg(args, unsigned int))
+			counter += decimalTobinary(va_arg(args, unsigned int));
 		}
 	}
 	else
@@ -49,7 +51,6 @@ int _printf(const char *format, ...)
 	}
 		format++;
 	}
-
 	va_end(args);
 	return (counter);
 }
