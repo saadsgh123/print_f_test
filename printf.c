@@ -6,10 +6,9 @@
  */
 int _printf(const char *format, ...)
 {
-	int counter = 0, num;
+	int counter = 0;
 	va_list args;
 	char ch;
-	unsigned int value;
 
 	va_start(args, format);
 	if (!format)
@@ -24,43 +23,27 @@ int _printf(const char *format, ...)
 	switch (*format)
 	{
 		case '%':
-			write(1, "%", 1);
-			counter++;
+			_putchar('%', &counter);
 		break;
 		case 's':
 			counter += print_string(args);
 		break;
 		case 'c':
 			ch = (va_arg(args, int));
-			write(1, &ch, 1);
-			counter++;
+			_putchar(ch, &counter);
 		break;
-		case 'd':
-			num = va_arg(args, int);
-			counter += print_decimal(num);
-		break;
-		case 'i':
-			num = va_arg(args, int);
-			counter += print_int(num);
-		break;
-		case 'b':
-			value = va_arg(args, unsigned int);
-			counter += decimalTobinary(value);
-			break;
 		default:
-			write(1, "%", 1);
-			write(1, format, 1);
-			counter += 2;
-			break;
-		}
+			_putchar('%', &counter);
+			_putchar(*format, &counter);
+		break;
+	}
 	}
 	else
 	{
-		write(1, format, 1);
-		counter++;
+	_putchar(*format, &counter);
 	}
-		format++;
-	}
+	format++;
+}
 	va_end(args);
 	return (counter);
 }
