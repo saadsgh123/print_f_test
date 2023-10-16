@@ -22,6 +22,7 @@ int _printf(const char *format, ...)
         if (*format == '%')
         {
                 format++;
+	}
         switch(*format)
         {
                 case '%':
@@ -89,9 +90,8 @@ int print_string(va_list args) {
 
 int print_int(int n)
 {
-    int count = 0;
-    int sign = 1;
-
+    int count, temp = 0, divisor, sign = 1, i, digit;
+    char digit_char;
     if (n < 0)
     {
         write(1, "-", 1);
@@ -100,7 +100,7 @@ int print_int(int n)
         n = -n;
     }
 
-    int temp = n;
+    temp = n;
     int num_digits = 0;
     while (temp > 0)
     {
@@ -117,14 +117,14 @@ int print_int(int n)
     {
         while (num_digits > 0)
         {
-            int divisor = 1;
-            for (int i = 1; i < num_digits; i++)
+            divisor = 1;
+            for (i = 1; i < num_digits; i++)
             {
                 divisor *= 10;
             }
 
-            int digit = n / divisor;
-            char digit_char = '0' + digit;
+            digit = n / divisor;
+            digit_char = '0' + digit;
             write(1, &digit_char, 1);
             count++;
             n -= digit * divisor;
