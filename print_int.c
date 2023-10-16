@@ -14,10 +14,11 @@ int print_int(int n)
 
 	if (l < 0)
 	{
-		_putchar('-', &count);
+		_putcharForInt('-');
 		num = -num;
 		n = -n;
 		l = -l;
+		count++;
 	}
 	if (num > 0)
 	{
@@ -26,16 +27,17 @@ int print_int(int n)
 			e = e * 10;
 			num = num / 10;
 		}
-		num = n;
+			num = n;
 		while (e > 0)
 		{
 			d = num / e;
-			_putchar(d + '0', &count);
+			_putcharForInt(d + '0');
 			num = num - (d * e);
 			e = e / 10;
-		}
+			count++;
 	}
-	_putchar(l + '0', 0);
+	}
+	_putcharForInt(l + '0');
 
 	return (count);
 }
