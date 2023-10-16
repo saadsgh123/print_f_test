@@ -12,11 +12,15 @@ int _printf(const char *format, ...)
 	unsigned int value;
 
 	va_start(args, format);
+	if (!format)
+		return (-1);
 	while (*format)
 	{
 	if (*format == '%')
 	{
 		format++;
+	if (*format == '\0')
+		return (-1);
 	switch (*format)
 	{
 		case '%':
