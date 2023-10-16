@@ -12,5 +12,7 @@ int print_string(va_list args);
 int _putchar(char c, int *count);
 int print_decimal(int n);
 int decimalTobinary(unsigned int d);
+int printf_helper(const char *format, va_list args, int *counter);
+int _putcharForInt(char c);
 
 #endif
