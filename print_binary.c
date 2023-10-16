@@ -6,7 +6,7 @@
  */
 int decimalTobinary(unsigned int d)
 {
-int counter = 0, j, quotient[32], i = 0;
+int j, quotient[32], i = 0;
 
 	if (d == 0)
 	{
