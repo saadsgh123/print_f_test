@@ -1,53 +1,41 @@
-#include <limits.h>
-#include <stdio.h>
 #include "main.h"
+int main() {
+    int num1 = 42;
+    int num2 = -123;
+    int num3 = 0;
+    int num4 = 2147483647;
+    int num5 = -2147483648;
+    int num6 = 7;
+    int num7 = 42;
 
-/**
- * main - Entry point
- *
- * Return: Always 0
- */
-int main(void)
-{
+    // Test with your custom _printf
+    printf("Custom _printf:\n");
+    _printf("Positive Integer: %d\n", num1);
+    _printf("Negative Integer: %d\n", num2);
+    _printf("Zero: %d\n", num3);
+    _printf("Large Integer: %d\n", num4);
+    _printf("Smallest Integer: %d\n", num5);
+    _printf("Mix of Format Specifiers: %d %i\n", num6, num7);
+    _printf("Leading and Trailing Text: The answer is: %d, correct?\n", num1);
+    _printf("Multiple Format Specifiers: %d %i %d\n", num1, num2, num3);
+    _printf("Format Specifier with Width and Precision: %05d, %2i\n", num1, num2);
+    _printf("Mix of Different Data Types: %d %i %d\n", num1, (short)num2, num3);
+    _printf("No Integer Argument: %d\n");
+    _printf("Mix with text: Number: %d\n", num1);
 
+    // Test with standard printf for comparison
+    printf("\nStandard printf:\n");
+    printf("Positive Integer: %d\n", num1);
+    printf("Negative Integer: %d\n", num2);
+    printf("Zero: %d\n", num3);
+    printf("Large Integer: %d\n", num4);
+    printf("Smallest Integer: %d\n", num5);
+    printf("Mix of Format Specifiers: %d %d\n", num6, num7);
+    printf("Leading and Trailing Text: The answer is: %d, correct?\n", num1);
+    printf("Multiple Format Specifiers: %d %d %d\n", num1, num2, num3);
+    printf("Format Specifier with Width and Precision: %05d, %2d\n", num1, num2);
+    printf("Mix of Different Data Types: %d %d %d\n", num1, (short)num2, num3);
+    printf("Mix with text: Number: %d\n", num1);
 
-    _printf("Let's try to printf a simple sentence.\n");
-  _printf("%c", 'S');
-  _printf("A char inside a setence: %c. did it work? \n", 'F' );
-    _printf("let `see if the cast is correctly done: %c.did it  work?\n 48");
-      _printf("Complete the setence: You %s nothing, Jon snow.\n", "Know" );
-        _printf("%c", '\0');
-	printf("%c",'\0');
-	_printf("%");
-	printf("%\n");
-	_printf("%s,%s\n","saad", '1');
-    printf("%s,%s\n","saad", '1');
- /* 
-   len2 = printf("Let's try to printf a simple sentence.\n");
-    ui = (unsigned int)INT_MAX + 1024;
-    addr = (void *)0x7ffe637541f0;
-    _printf("Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
-    _printf("Negative:[%d]\n", -762534);
-    printf("Negative:[%d]\n", -762534);
-    _printf("Unsigned:[%u]\n", ui);
-    printf("Unsigned:[%u]\n", ui);
-    _printf("Unsigned octal:[%o]\n", ui);
-    printf("Unsigned octal:[%o]\n", ui);
-    _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    _printf("Character:[%c]\n", 'H');
-    printf("Character:[%c]\n", 'H');
-    _printf("String:[%s]\n", "I am a string !");
-    printf("String:[%s]\n", "I am a string !");
-    _printf("Address:[%p]\n", addr);
-    printf("Address:[%p]\n", addr);
-    len = _printf("Percent:[%%]\n");
-    len2 = printf("Percent:[%%]\n");
-    _printf("Len:[%d]\n", len);
-    printf("Len:[%d]\n", len2);
-    _printf("Unknown:[%r]\n");
-    printf("Unknown:[%r]\n");*/
-    return (0);
-    
+    return 0;
 }
