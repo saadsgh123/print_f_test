@@ -15,11 +15,10 @@ int print_decimal(int n)
 
 	if (l < 0)
 	{
-		_putchar('-');
+		_putchar('-', &count);
 		num = -num;
 		n = -n;
 		l = -l;
-		count++;
 	}
 	if (num > 0)
 	{
@@ -32,13 +31,11 @@ int print_decimal(int n)
 		while (exp > 0)
 		{
 			d = num / exp;
-			_putchar(d + '0');
+			_putchar(d + '0', &count);
 			num = num - (d * exp);
 			exp = exp / 10;
-			count++;
 		}
 	}
-	_putchar(l + '0');
-
+	_putchar(l + '0', 0);
 	return (count);
 }
