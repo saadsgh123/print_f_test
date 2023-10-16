@@ -28,15 +28,15 @@ int printf_helper(const char *format, va_list args, int *counter)
 			break;
 		case 'd':
 			num = va_arg(args, int);
-			counter += print_decimal(num);
+			(*counter) += print_decimal(num);
 		break;
 		case 'i':
 			num = va_arg(args, int);
-			counter += print_int(num);
+			(*counter) += print_int(num);
 		break;
 		case 'b':
 			value = va_arg(args, unsigned int);
-			counter += decimalTobinary(value);
+			(*counter) += decimalTobinary(value);
 			break;
 		default:
 			write(1, "%", 1);
