@@ -6,7 +6,7 @@
  * @counter: counter.
  * Return: Always 0
  */
-int x_u_o_helper(const char *format, va_list args, int *counter)
+int function3(const char *format, va_list args, int *counter)
 {
 	unsigned int value;
 

@@ -21,11 +21,11 @@ while (*f)
 		if (*f == '\0')
 			return (-1);
 		if (*f == 'c' || *f == 's' || *f == '%')
-			c_s_helper(f, args, &counter);
+			function1(f, args, &counter);
 		else if (*f == 'd' || *f == 'i' || *f == 'b')
-			d_i_b_help(f, args, &counter);
+			function2(f, args, &counter);
 		else if (*f == 'x' || *f == 'X' || *f == 'u' || *f == 'o')
-			x_u_o_helper(f, args, &counter);
+			function3(f, args, &counter);
 		else
 		{
 			write(1, "%", 1);

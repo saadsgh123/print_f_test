@@ -6,7 +6,7 @@
  * @counter: counter.
  * Return: Always 0
  */
-int d_i_b_help(const char *format, va_list args, int *counter)
+int function2(const char *format, va_list args, int *counter)
 {
 	int value;
 	int num;

@@ -6,7 +6,7 @@
  * @counter: counter.
  * Return: Always 0
  */
-int c_s_helper(const char *format, va_list args, int *counter)
+int function1(const char *format, va_list args, int *counter)
 {
 	char ch;
 
