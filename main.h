@@ -7,7 +7,7 @@
 
 int print_int(int n);
 int print_string(va_list args);
-int _printf(const char *format, ...);
+int _printf(const char *f, ...);
 int print_string(va_list args);
 int _putchar(char c, int *count);
 int print_decimal(int n);
