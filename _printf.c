@@ -1,45 +1,33 @@
 #include "main.h"
 /**
  * _printf - Entry point
- * @f: format
+ * @format: format
  * Return: Always 0
  */
-int _printf(const char *f, ...)
+int _printf(const char *format, ...)
 {
-int counter = 0;
+	int counter = 0;
+	va_list args;
 
-va_list args;
-va_start(args, f);
-
-if (!f)
-	return (-1);
-while (*f)
-{
-	if (*f == '%')
+	va_start(args, format);
+	if (!format)
+		return (-1);
+	while (*format)
 	{
-		f++;
-		if (*f == '\0')
+	if (*format == '%')
+	{
+		format++;
+		if (*format == '\0')
 			return (-1);
-		if (*f == 'c' || *f == 's' || *f == '%')
-			function1(f, args, &counter);
-		else if (*f == 'd' || *f == 'i' || *f == 'b')
-			function2(f, args, &counter);
-		else if (*f == 'x' || *f == 'X' || *f == 'u' || *f == 'o')
-			function3(f, args, &counter);
-		else
-		{
-			write(1, "%", 1);
-			write(1, f, 1);
-			counter += 2;
-		}
+	printf_helper(format, args, &counter);
 	}
 	else
 	{
-		write(1, f, 1);
+		write(1, format, 1);
 		counter++;
 	}
-	f++;
-}
-va_end(args);
-return (counter);
+		format++;
+	}
+	va_end(args);
+	return (counter);
 }
