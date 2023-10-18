@@ -4,9 +4,6 @@
 #include <unistd.h>
 #include <limits.h>
 #include "stdarg.h"
-#define TYPE_1 1
-#define TYPE_2 2
-#define TYPE_3 3
 
 int print_int(int n);
 int print_string(va_list args);
@@ -24,5 +21,5 @@ int print_uns(unsigned int n);
 int string_helper(const char *format, va_list args, int *counter);
 int decimal_helper(const char *format, va_list args, int *counter);
 int hexdeci_helper(const char *format, va_list args, int *counter);
-int get_spec(char format);
+
 #endif
