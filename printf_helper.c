@@ -8,7 +8,7 @@
  */
 int printf_helper(const char *format, va_list args, int *counter)
 {
-	switch (get_spec(format))
+	switch (get_spec(*format))
 	{
 		case TYPE_1:
 			string_helper(format, args, counter);

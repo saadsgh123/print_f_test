@@ -4,11 +4,11 @@
  * @format: input
  * Return: Always 0
  */
-int get_spec(char *format)
+int get_spec(char format)
 {
 	if (format == NULL)
 		return (-1);
-	switch (*format)
+	switch (format)
 	{
 		case 'c': return TYPE_1;
 		case 's': return TYPE_1;
