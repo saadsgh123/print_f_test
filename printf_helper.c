@@ -8,35 +8,16 @@
  */
 int printf_helper(const char *format, va_list args, int *counter)
 {
-	char ch;
-	unsigned int value;
-	int num;
-
-	switch (*format)
+	switch (get_spec(format))
 	{
-		case '%':
-			write(1, "%", 1);
-			(*counter)++;
+		case TYPE_1:
+			string_helper(format, args, counter);
 			break;
-		case 's':
-			(*counter) += print_string(args);
+		case TYPE_2:
+			decimal_helper(format, args, counter);
 			break;
-		case 'c':
-			ch = (va_arg(args, int));
-			write(1, &ch, 1);
-			(*counter)++;
-			break;
-		case 'd':
-			num = va_arg(args, int);
-			(*counter) += print_decimal(num);
-		break;
-		case 'i':
-			num = va_arg(args, int);
-			(*counter) += print_int(num);
-		break;
-		case 'b':
-			value = va_arg(args, unsigned int);
-			(*counter) += decimalTobinary(value);
+		case TYPE_3:
+			hexdeci_helper(format, args, counter);
 			break;
 		default:
 			write(1, "%", 1);
