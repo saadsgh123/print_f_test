@@ -24,5 +24,5 @@ int print_uns(unsigned int n);
 int string_helper(const char *format, va_list args, int *counter);
 int decimal_helper(const char *format, va_list args, int *counter);
 int hexdeci_helper(const char *format, va_list args, int *counter);
-int get_spec(char *format);
+int get_spec(char format);
 #endif

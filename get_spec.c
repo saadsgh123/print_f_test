@@ -6,8 +6,6 @@
  */
 int get_spec(char format)
 {
-	if (format == NULL)
-		return (-1);
 	switch (format)
 	{
 		case 'c': return TYPE_1;
