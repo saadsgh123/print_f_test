@@ -7,22 +7,21 @@
 int _printf(const char *format, ...)
 {
 	int count = 0;
-	int i = 0, handled = 0;
+	int i, handled;
 	va_list args;
 	is_match f[] = {
-			{'s', print_string}, {'c', print_char},
-			{'d', print_decimal}, {'i', print_int},
-			{'b', decimalTobinary}, {'x', print_hex},
-			{'X', print_cap_hex}, {'u', print_uns},
-			{'o', print_octal}};
+		{'s', print_string}, {'c', print_char},
+		{'d', print_decimal}, {'i', print_int},
+		{'b', decimalTobinary}, {'x', print_hex},
+		{'X', print_cap_hex}, {'u', print_uns},
+		{'o', print_octal}};
 	va_start(args, format);
-
 	if (!format)
 		return (va_end(args), -1);
 	while (*format)
 	{
-	if (*format == '%')
-	{
+		if (*format == '%')
+		{
 		format++;
 		if (*format == '\0')
 			return (count);
@@ -37,11 +36,11 @@ int _printf(const char *format, ...)
 			}
 		}
 		if (!handled)
-			write(1, format, 1), count++;
+		write(1, format, 1), count++;
 	}
 	else
 		write(1, format, 1), count++;
-	format++;
+		format++;
 	}
 	va_end(args);
 	return (count);
