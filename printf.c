@@ -6,44 +6,42 @@
  */
 int _printf(const char *format, ...)
 {
-	int counter = 0, i;
-
-	is_match f[] = {
-		{'s', print_string}, {'c', print_char},
-		{'d', print_decimal}, {'i', print_int},
-		{'b', decimalTobinary}, {'x', print_hex},
-		{'X', print_cap_hex}, {'u', print_uns}, {'o', print_octal}
-	};
+	int count = 0;
+        int i = 0, handled = 0;
 	va_list args;
-
+	is_match f[] = {
+			{'s', print_string}, {'c', print_char},
+			{'d', print_decimal}, {'i', print_int},
+			{'b', decimalTobinary}, {'x', print_hex},
+			{'X', print_cap_hex}, {'u', print_uns},
+			{'o', print_octal}};
 	va_start(args, format);
-	if (format == NULL)
-		return (-1);
+
+	if (!format)
+		return (va_end(args), -1);
 	while (*format)
 	{
 	if (*format == '%')
 	{
 		format++;
 		if (*format == '\0')
-			return (-1);
+			return (va_end(args), -1);
 		for (i = 0; i < 9; i++)
 		{
 			if (*format == f[i].spec)
 			{
-				f[i].func(args, &counter);
+				f[i].func(args, &count);
+				handled = 1;
+				break;
 			}
 		}
-		if (*format == '%')
-		{
-			print_format(*format, &counter);
-		}
+		if (!handled)
+			write(1, format, 1), count++;
 	}
 	else
-	{
-		print_format(*format, &counter);
-	}
-		format++;
+		write(1, format, 1), count++;
+	format++;
 	}
 	va_end(args);
-	return (counter);
+	return (count);
 }

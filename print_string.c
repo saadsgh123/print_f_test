@@ -13,7 +13,7 @@ int print_string(va_list args, int *counter)
 	if (!str)
 	{
 		write(1, "(null)", 6);
-		(*counter) = 6;
+		(*counter) += 6;
 		return (*counter);
 	}
 	else
