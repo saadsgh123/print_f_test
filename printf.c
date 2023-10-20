@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 
 	if (!format)
-		return (va_end(args), -1);
+		return (count);
 	while (*format)
 	{
 	if (*format == '%')
