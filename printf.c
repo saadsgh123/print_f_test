@@ -18,14 +18,14 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 
 	if (!format)
-		return (count);
+		return (va_end(args), -1);
 	while (*format)
 	{
 	if (*format == '%')
 	{
 		format++;
 		if (*format == '\0')
-			return (va_end(args), -1);
+			return (count);
 		handled = 0;
 		for (i = 0; i < 9; i++)
 		{
