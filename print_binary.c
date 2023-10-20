@@ -1,7 +1,8 @@
 #include "main.h"
 /**
  * decimalTobinary - Entry point
- * @d: format
+ * @args: format
+ * @counter: counter.
  * Return: Always 0
  */
 int decimalTobinary(va_list args, int *counter)
