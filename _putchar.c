@@ -2,11 +2,21 @@
 /**
  * _putchar - Entry point
  * @c: c
+ * @count: count
  * Return: Always 0
  */
-int _putchar(char c)
+int _putchar(char c, int *count)
 {
-	write(1, &c, 1);
-	return (1);
+	(*count)++;
+	return (write(1, &c, 1));
 }
 
+/**
+ * _putcharForInt - Entry point
+ * @c: c
+ * Return: Always 0
+ */
+int _putcharForInt(char c)
+{
+	return (write(1, &c, 1));
+}

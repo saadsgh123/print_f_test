@@ -1,18 +1,16 @@
 #include "main.h"
 /**
  * decimalTobinary - Entry point
- * @args: format
- * @counter: counter.
+ * @d: format
  * Return: Always 0
  */
-int decimalTobinary(va_list args, int *counter)
+int decimalTobinary(unsigned int d)
 {
-	int d = va_arg(args, unsigned int), j, quotient[32], i = 0;
-
+int counter = 0, j, quotient[32], i = 0;
 
 	if (d == 0)
 	{
-		_putchar('0');
+		_putcharForInt('0');
 		return (1);
 	}
 	while (d > 0)
@@ -24,8 +22,8 @@ int decimalTobinary(va_list args, int *counter)
 
 	for (j = i - 1; j >= 0; j--)
 	{
-		_putchar(quotient[j] + '0');
-		(*counter)++;
+		_putcharForInt(quotient[j] + '0');
+		counter++;
 	}
-	return (1);
+	return (counter);
 }

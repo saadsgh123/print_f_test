@@ -1,26 +1,24 @@
 #include "main.h"
 /**
  * print_int - Entry point
- * @args: format
- * @counter: counter.
+ * @n: format
  * Return: Always 0
  */
-int print_int(va_list args, int *counter)
+int print_int(int n)
 {
-	int n = va_arg(args, int);
-
 	int num, l = n % 10, d, e = 1;
+	int  count = 1;
 
 	n = n / 10;
 	num = n;
 
 	if (l < 0)
 	{
-		_putchar('-');
+		_putcharForInt('-');
 		num = -num;
 		n = -n;
 		l = -l;
-		(*counter)++;
+		count++;
 	}
 	if (num > 0)
 	{
@@ -33,13 +31,13 @@ int print_int(va_list args, int *counter)
 		while (e > 0)
 		{
 			d = num / e;
-			_putchar(d + '0');
+			_putcharForInt(d + '0');
 			num = num - (d * e);
 			e = e / 10;
-			(*counter)++;
+			count++;
 	}
 	}
-	_putchar(l + '0');
-	(*counter)++;
-	return (1);
+	_putcharForInt(l + '0');
+
+	return (count);
 }
