@@ -7,7 +7,7 @@
 int _printf(const char *format, ...)
 {
 	int count = 0;
-        int i = 0, handled = 0;
+	int i = 0, handled = 0;
 	va_list args;
 	is_match f[] = {
 			{'s', print_string}, {'c', print_char},
@@ -26,6 +26,7 @@ int _printf(const char *format, ...)
 		format++;
 		if (*format == '\0')
 			return (va_end(args), -1);
+		handled = 0;
 		for (i = 0; i < 9; i++)
 		{
 			if (*format == f[i].spec)
