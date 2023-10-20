@@ -24,6 +24,7 @@ int print_string(va_list args, int *counter)
 		str++;
 		(*counter)++;
 	}
+		va_end(args);
 		return (1);
 	}
 }
