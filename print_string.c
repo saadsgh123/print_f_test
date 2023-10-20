@@ -1,19 +1,20 @@
 #include "main.h"
 /**
  * print_string - Entry point
- * @args: c
+ * @args: c.
+ * @counter: counter.
  * Return: Always 0
  */
-int print_string(va_list args)
+
+int print_string(va_list args, int *counter)
 {
 	char *str = va_arg(args, char *);
-
-	int count = 0;
 
 	if (!str)
 	{
 		write(1, "(null)", 6);
-		return (6);
+		(*counter) = 6;
+		return (*counter);
 	}
 	else
 	{
@@ -21,9 +22,8 @@ int print_string(va_list args)
 	{
 		write(1, str, 1);
 		str++;
-		count++;
+		(*counter)++;
 	}
-	va_end(args);
-	return (count);
+		return (1);
 	}
 }

@@ -1,24 +1,25 @@
 #include "main.h"
 /**
  * print_decimal - prints decimal
- * @n: dec to print
+ * @args: dec to print
+ * @counter: counter
  * Return: number of characters printed
  */
-int print_decimal(int n)
+int print_decimal(va_list args, int *counter)
 {
+	int n = va_arg(args, int);
 	int num, l = n % 10, d;
-	int  count = 1;
 	int exp = 1;
 
 	n = n / 10;
 	num = n;
 	if (l < 0)
 	{
-		_putcharForInt('-');
+		_putchar('-');
 		num = -num;
 		n = -n;
 		l = -l;
-		count++;
+	(*counter)++;
 	}
 	if (num > 0)
 	{
@@ -31,12 +32,13 @@ int print_decimal(int n)
 	while (exp > 0)
 	{
 		d = num / exp;
-		_putcharForInt(d + '0');
+		_putchar(d + '0');
 		num = num - (d * exp);
 		exp = exp / 10;
-		count++;
+	(*counter)++;
 	}
 	}
-	_putcharForInt(l + '0');
-	return (count);
+	_putchar(l + '0');
+	(*counter)++;
+	return (1);
 }

@@ -1,19 +1,18 @@
 #include "main.h"
 /**
- * print_int - Entry point
+ * print_uns - print unsigned numbers.
  * @args: format
  * @counter: counter.
- * Return: Always 0
+ * Return: count.
  */
-int print_int(va_list args, int *counter)
+int print_uns(va_list args, int *counter)
 {
-	int n = va_arg(args, int);
+	unsigned int n = va_arg(args, unsigned int);
 
-	int num, l = n % 10, d, e = 1;
+	int num, d, e = 1, l = n % 10;
 
 	n = n / 10;
 	num = n;
-
 	if (l < 0)
 	{
 		_putchar('-');
@@ -29,7 +28,7 @@ int print_int(va_list args, int *counter)
 			e = e * 10;
 			num = num / 10;
 		}
-			num = n;
+		num = n;
 		while (e > 0)
 		{
 			d = num / e;
@@ -37,7 +36,7 @@ int print_int(va_list args, int *counter)
 			num = num - (d * e);
 			e = e / 10;
 			(*counter)++;
-	}
+		}
 	}
 	_putchar(l + '0');
 	(*counter)++;
